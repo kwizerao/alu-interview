@@ -1,18 +1,17 @@
 #!/usr/bin/python3
-"""Alu interview project"""
+""" Minimum Operations"""
 
 
 def minOperations(n):
-    """ Min op function """
+    """ Minimum Operations"""
     if n <= 1:
         return 0
     i = 2
     result = 0
-    while i <=n:
+    while i <= n:
         if n % i == 0:
             result += i
-            n = n/1
+            n = n / i
         else:
-            i += 1
-    return result 
-
+            i += 1 
+    return result
