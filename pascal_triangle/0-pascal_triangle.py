@@ -67,4 +67,4 @@ def print_triangle(triangle):
 if __name__ == "__main__":
     triangle = pascal_triangle(5)
     print_triangle(triangle)
-    
+   
