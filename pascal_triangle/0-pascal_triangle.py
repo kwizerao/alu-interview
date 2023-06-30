@@ -1,70 +1,37 @@
 #!/usr/bin/python3
-
 """
-0-pascal_triangle
-Module that defines a function to generate Pascal's Triangle.
+Pascal's Triangle
 """
 
 
 def pascal_triangle(n):
     """
-    Generates Pascal's Triangle up to the given level.
-
-    Args:
-        n (int): The level of Pascal's Triangle to generate.
-
-    Returns:
-        list: A list of lists representing Pascal's Triangle.
-
-    Raises:
-        ValueError: If n is less than or equal to 0.
-
-    Examples:
-        >>> pascal_triangle(5)
-        [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]
+    A function def pascal_triangle(n):
+    that return a list of integers representing the Pascal's triangle of n
     """
-
+    # Return an empty list if n is less than or equal to 0
     if n <= 0:
         return []
-
+    # Initialize the triangle with the first row
     triangle = [[1]]
 
+    # Loop through the remaining elements in the row
     for i in range(1, n):
+        # Initialize a new row with the first element
         row = [1]
-        prev_row = triangle[i - 1]
 
+        # Loop through the remaining elements in the row
         for j in range(1, i):
-            element = prev_row[j - 1] + prev_row[j]
-            row.append(element)
+            # Compute the value of current element using the values
+            # from previous row
+            value = triangle[i - 1][j - 1] + triangle[i - 1][j]
+            row.append(value)
 
+        # Add the last element of the row as 1
         row.append(1)
+
+        # Append the new row to the triangle
         triangle.append(row)
 
+    # Return the complete triangle
     return triangle
-
-
-def print_triangle(triangle):
-    """
-    Prints the Pascal's Triangle.
-
-    Args:
-        triangle (list): A list of lists representing Pascal's Triangle.
-
-    Returns:
-        None
-
-    Examples:
-        >>> triangle = [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1]]
-        >>> print_triangle(triangle)
-        [1]
-        [1, 1]
-        [1, 2, 1]
-        [1, 3, 3, 1]
-    """
-    for row in triangle:
-        print("[{}]".format(",".join([str(x) for x in row])))
-
-if __name__ == "__main__":
-    triangle = pascal_triangle(5)
-    print_triangle(triangle)
-   
